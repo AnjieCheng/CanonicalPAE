@@ -1,0 +1,39 @@
+method: unfoldnet
+data:
+  dataset: KeypointNet
+  path: /home/vslab2018/3d/data/KeypointNet
+  classes: ['03790512']
+  input_type: pointcloud
+  train_split: train
+  val_split: val
+  test_split: test
+  pointcloud_n: 2048
+  pointcloud_noise: 0.05
+  with_transforms: false
+  with_rotation: false
+  angle_sigma: 0.2
+  angle_clip: 0.5
+  points_folder: pcds
+  keypoints_folder: annotations
+model:
+  decoder: invertible
+  encoder: pointnet_atlas 
+  z_dim: 512
+  decoder_kwargs: {}
+  encoder_kwargs: {}
+training:
+  mode: folding
+  out_dir:  out/default
+  batch_size: 16
+  print_every: 10
+  visualize_every: 200
+  checkpoint_every: 200
+  min_val_epoch: 0
+  validate_every: 1
+  backup_every: 5000
+  model_selection_metric: by_uv_dist
+  model_selection_mode: minimize
+  alpha: -1 # abl
+  uv_type: 'sphere' # abl
+  no_cross: False # abl
+  no_training: False #vis

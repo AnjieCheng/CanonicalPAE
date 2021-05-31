@@ -1,0 +1,32 @@
+method: unfoldnet
+data:
+  dataset: KeypointNet
+  path: /home/vslab2018/3d/data/KeypointNet
+  classes: ['03790512'] # supposely deprecated
+  input_type: pointcloud
+  train_split: train
+  val_split: val
+  test_split: test
+  pointcloud_n: 2048
+  pointcloud_noise: 0.05
+  with_transforms: false
+  points_folder: pcds
+  keypoints_folder: annotations
+model:
+  decoder: invertible # supposely deprecated
+  encoder: pointnet_atlas # pointnet_resnet # resnet18 # vgg16 # resnet18
+  z_dim: 512
+  decoder_kwargs: {}
+  encoder_kwargs: {}
+training:
+  out_dir:  out/keypoint/default
+  batch_size: 16
+  print_every: 10
+  visualize_every: 1000
+  checkpoint_every: 200
+  validate_every: 1000
+  min_val_epoch: 1000
+  backup_every: 5000
+  model_selection_metric: by_uv_dist
+  model_selection_mode: minimize
+  
