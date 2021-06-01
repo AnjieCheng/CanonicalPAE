@@ -36,8 +36,8 @@ DATASETS!
 
 To train the model(s) in the paper, run this command:
 
-```train
-python train.py --input-data <path_to_data> --alpha 10 --beta 20
+```bash
+python train.py configs/keypoint/default.yaml -c chair
 ```
 
 >📋  Describe how to train the models, with example commands on how to train the models in your paper, including the full training procedure and appropriate hyperparameters.

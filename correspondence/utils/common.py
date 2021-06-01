@@ -57,3 +57,37 @@ def batch_sample_from_2d_grid(grid, K, batch_size, without_sample=False):
     sampled_points = torch.gather(grid, dim=1, index=idx)
     assert(sampled_points.size() == (batch_size, K, 2))
     return sampled_points
+
+def match_source_to_target_points(source, target, device):
+    indices_batch, _ = get_nearest_neighbors_indices_batch(source.cpu().numpy(), target.cpu().numpy())
+    indices_batch_ts = torch.tensor(np.stack(indices_batch,axis=0).astype(np.int32)).long().to(device)
+    matched_batch = batched_index_select(target, 1, indices_batch_ts)
+    return indices_batch_ts, matched_batch
+
+def get_nearest_neighbors_indices_batch(points_src, points_tgt, k=1):
+    ''' Returns the nearest neighbors for point sets batchwise.
+
+    Args:
+        points_src (numpy array): source points
+        points_tgt (numpy array): target points
+        k (int): number of nearest neighbors to return
+    '''
+    indices = []
+    distances = []
+
+    for (p1, p2) in zip(points_src, points_tgt):
+        # kdtree = KDTree(p2)
+        dist, idx = scipy.spatial.KDTree(p2).query(p1)      # kdtree.query(p1, k=k)
+        indices.append(idx)
+        distances.append(dist)
+
+    return indices, distances
+
+def batched_index_select(input, dim, index):
+	views = [input.shape[0]] + \
+		[1 if i != dim else -1 for i in range(1, len(input.shape))]
+	expanse = list(input.shape)
+	expanse[0] = -1
+	expanse[dim] = -1
+	index = index.view(views).expand(expanse)
+	return torch.gather(input, dim, index)
