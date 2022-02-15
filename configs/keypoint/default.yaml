@@ -22,10 +22,10 @@ training:
   out_dir:  out/keypoint/default
   batch_size: 16
   print_every: 10
-  visualize_every: 1000
+  visualize_every: 5000
   checkpoint_every: 200
-  validate_every: 1000
-  min_val_epoch: 1000
+  validate_every: 5000
+  min_val_epoch: 2000
   backup_every: 5000
   model_selection_metric: by_uv_dist
   model_selection_mode: minimize

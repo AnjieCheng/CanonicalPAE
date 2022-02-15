@@ -74,13 +74,13 @@ class KeypointNetDataset(data.Dataset):
 
         if os.path.exists(metadata_file):
             with open(metadata_file, 'r') as f:
-                self.metadata = yaml.load(f)
+                self.metadata = yaml.safe_load(f)
         else:
             logger.warning('Dataset metadata file does not exist, setting name to n/a.')
             self.metadata = {
                 c: {'id': c, 'name': 'n/a'} for c in categories
-            } 
-        
+            }
+
         # Set index
         for c_idx, c in enumerate(categories):
             self.metadata[c]['idx'] = c_idx
@@ -207,8 +207,8 @@ class PartNetDataset(data.Dataset):
             logger.warning('Dataset metadata file does not exist, setting name to n/a.')
             self.metadata = {
                 c: {'id': c, 'name': ID2NAMES[c]} for c in categories
-            } 
-        
+            }
+
         # Set index
         for c_idx, c in enumerate(categories):
             self.metadata[c]['idx'] = c_idx
@@ -218,7 +218,7 @@ class PartNetDataset(data.Dataset):
 
         for c in categories:
             category_folder = os.path.join(dataset_folder, c+'_'+ID2NAMES[c])
-            
+
             vox_data_path = os.path.join(category_folder, c+'_'+split + '_vox.hdf5')
             split_file = os.path.join(category_folder, c+'_'+split + '_vox.txt')
             model_idx = 0
@@ -237,7 +237,7 @@ class PartNetDataset(data.Dataset):
                         model_idx += 1
 
         if split in ['val', 'test']:
-            self.tmp_models = sorted(self.tmp_models, key=lambda k: k['model']) 
+            self.tmp_models = sorted(self.tmp_models, key=lambda k: k['model'])
 
         print("split: %s, length: %d" % (split, len(self.tmp_models)))
 
