@@ -1,7 +1,7 @@
 # CanonicalPAE
 ### [project page](https://anjiecheng.github.io/cpae/) |   [paper](https://proceedings.neurips.cc/paper/2021/file/3413ce14d52b87557e87e2c1518c2cbe-Paper.pdf)
 
-This repository is the implementation of Learning 3D Dense Correspondence via Canonical Point Autoencoder. 
+This repository is the implementation of "Learning 3D Dense Correspondence via Canonical Point Autoencoder". 
 
 <img src="./assets/overview.png" width="1000px"/>
 
@@ -56,5 +56,14 @@ To plot the curve as below, please see the notebook file in `out/plot_curve.ipyn
 <img src="./assets/kp_plot_curve.png" width="300px"/>
 
 
-
-
+## Reference
+Please cite our paper ([link](https://proceedings.neurips.cc/paper/2021/file/3413ce14d52b87557e87e2c1518c2cbe-Paper.pdf)) 
+in your publications if this repo helps your research:
+```
+@inproceedings{cheng2021learning,
+    title     = {Learning 3D Dense Correspondence via Canonical Point Autoencoder},
+    author    = {Cheng, An-Chieh and Li, Xueting and Sun, Min and Yang, Ming-Hsuan and Liu, Sifei},
+    booktitle = {Advances in Neural Information Processing Systems},
+    year      = {2021}
+}
+```
