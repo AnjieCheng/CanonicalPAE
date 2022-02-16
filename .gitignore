@@ -1,5 +1,8 @@
 # Log
 /out
+/results
+
+results.zip
 
 # System hidden folders
 .empty/

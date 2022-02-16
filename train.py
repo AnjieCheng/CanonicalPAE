@@ -17,7 +17,7 @@ plant_seeds(random_seed=8888)
 
 # Arguments
 parser = argparse.ArgumentParser(
-    description='Train a 3D reconstruction model.'
+    description='Train CPAE.'
 )
 parser.add_argument('config', type=str, help='Path to config file.')
 parser.add_argument('--tag', type=str, default='', help='special running tag')
