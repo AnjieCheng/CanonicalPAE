@@ -16,14 +16,18 @@ To install PyMesh
 https://pymesh.readthedocs.io/en/latest/installation.html#building-pymesh
 ```
 
-To install Chamfer Loss 
+By default, the Chamfer Loss module should work properly. If you failed to run the chamfer loss module, please see the following link and follow their instruction.
 ```setup
-cd correspondence/auxiliary
-git clone https://github.com/ThibaultGROUEIX/ChamferDistancePytorch
+https://github.com/ThibaultGROUEIX/ChamferDistancePytorch
 ```
 
 To install EMD Loss, please follow the instruction in [
-MSN-Point-Cloud-Completion](https://github.com/Colin97/MSN-Point-Cloud-Completion). The installed `emd` folder should be under `correspondence/auxiliary`.
+here](https://github.com/AnjieCheng/CanonicalPAE/tree/main/external/emd). 
+```setup
+cd external/emd
+python setup.py install
+```
+The installed `build` folder should be under `external/emd`.
 
 
 ### Dataset
