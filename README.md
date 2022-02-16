@@ -49,7 +49,7 @@ Pretrained models together with the baselines' result files can be downloaded [h
 
 ### Evaluation
 To plot the curve as below, please see the notebook file in `out/plot_curve.ipynb`.
-<img src="./assets/kp_plot_curve.png" width="1000px"/>
+<img src="./assets/kp_plot_curve.png" width="300px"/>
 
 
 
